@@ -17,9 +17,9 @@ namespace BinarySearchTreeApplication
     /// </summary>
     class TreeNodes
     { 
-        public char letter { get; internal set; }
-        public TreeNodes left { get; internal set; }
-        public TreeNodes right { get; internal set; }
+        public char letter { get; set; }
+        public TreeNodes left { get; set; }
+        public TreeNodes right { get; set; }
 
         /// <summary>
         /// defines the individual node
@@ -70,7 +70,7 @@ namespace BinarySearchTreeApplication
             /// <param name="subroot"></param>
             public void walkThru(Node subroot)
             {
-                if (subroot == null)            // null mens empty and it ends
+                if (subroot == null)            // null means empty and it ends
                 {
                     return;
                 } // end of if

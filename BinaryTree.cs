@@ -22,7 +22,7 @@ namespace BinarySearchTreeApplication
         /// navigate and establish the tree
         /// </summary>
         #region ---Public Class Fields ---
-        public TreeNodes myRoot;
+        public TreeNodes Root;
         public TreeNodes current;   
         #endregion -- publics --
 
@@ -31,7 +31,8 @@ namespace BinarySearchTreeApplication
         /// </summary>
         public BinaryTree()
         {
-            myRoot = null;
+            Root = null;
+            current = null;
         } // end of no arg constructor
 
         /// <summary>
@@ -40,7 +41,7 @@ namespace BinarySearchTreeApplication
         /// <returns></returns>
         public TreeNodes GetRoot()
         {
-            return myRoot;
+            return Root;
         } // end of GetRoot 
 
         #region --- Methods ---
@@ -54,11 +55,11 @@ namespace BinarySearchTreeApplication
         {
             TreeNodes nextNode = new TreeNodes();       // create new node instance
             nextNode.letter = addTo;                    // sets node to new value
-            if (myRoot == null)             // if null value becomes master root
-                myRoot = nextNode;          // if not, the else kicks in to being finding where to hang node
+            if (Root == null)             // if null value becomes master root
+                Root = nextNode;          // if not, the else kicks in to being finding where to hang node
             else
             {
-                TreeNodes current = myRoot;
+                TreeNodes current = Root;
                 TreeNodes parent;
                 while (true)
                 {
@@ -92,13 +93,13 @@ namespace BinarySearchTreeApplication
         /// thru of the tree
         /// </summary>
         /// <param name="Root"></param>
-        public void walkThru(TreeNodes Root)
+        public void walkThru(TreeNodes myRoot)
         {
-            if (Root != null)
+            if (myRoot != null)
             {
-                walkThru(Root.left);                // recursive call to find the null
-                Console.Write(Root.letter + ", ");  // prints the node value
-                walkThru(Root.right);               // recursive call to find the null
+                walkThru(myRoot.left);                // recursive call to find the null
+                Console.Write(myRoot.letter + ", ");  // prints the node value
+                walkThru(myRoot.right);               // recursive call to find the null
             } // end of if
         } // end of walkThru
 
@@ -114,22 +115,22 @@ namespace BinarySearchTreeApplication
         {     
             if (subRoot == null)
             {
-                Console.WriteLine("End of tree reached!");
+                Console.WriteLine(" End of tree reached!");
                 return false;
             } // end of if root null
             else if (subRoot.letter.Equals(findMe))
             {
-                Console.WriteLine("This character is in the tree!!");
+                Console.WriteLine(" This character is in the tree!!");
                 return false;
             } // end of if
             else if (findMe < subRoot.letter)
             {
-                Console.WriteLine("This character is NOT in our tree!");
+                Console.WriteLine("   This character is NOT in this subtree!");
                 return Search(subRoot.left, findMe);
             } // end of esle if 
             else if (findMe > subRoot.letter)
             {
-                Console.WriteLine("This character is NOT in our tree!");
+                Console.WriteLine("This character is NOT in this subtree!");
                 return Search(subRoot.right, findMe);
             } // end of else if
 
